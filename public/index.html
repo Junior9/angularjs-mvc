@@ -6,25 +6,18 @@
         <title>Alurapic</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-
-        <script src="js/lib/angular.min.js"></script>
-       
+        <link rel="stylesheet" href="css/efeitos.css">
+        <script src="js/lib/angular.min.js"></script>  
         <script src="js/main.js"></script>
         <script src="js/controllers/foto-controller.js"></script>
-        <script src="js/directives/minhas-diretivas.js"> </script>
-
+        <script src="js/directives/minhas-diretivas.js"></script>
+        <script src="js/lib/angular-animate.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
     </head>
-    <body ng-controller='FotoController'>
 
+    <body>
         <div class="container">
-            <div class="jumbotron">
-                <h1 class="text-center">Angular-Js</h1>
-            </div>
-            
-            <meu-painel ng-repeat="foto in fotos" titulo="{{foto.titulo}}">                 
-                <img class ="img-responsive center-block"  src="{{foto.url}}" alt="{{foto.titulo}}">    
-            </meu-painel>
-        </div>
-                
+            <ng-view></ng-view>
+        </div>               
     </body>
 </html>
