@@ -1,14 +1,9 @@
-angular.module('module-main').controller('FotoController',function($scope,$http){
+angular.module('module-main').controller('FotoController',function($scope){
 
-	$scope.fotos = [];
+	$scope.foto = {}
 
-	$scope.filtro = '';
+	$scope.subMeter = function(){
+		console.log($scope.foto);
+	};
 
-	$http.get('/v1/fotos')
-	.success(function(fotos){
-		$scope.fotos = fotos;
-	})
-	.catch(function(error){
-		console.log(error)
-	});	
 });

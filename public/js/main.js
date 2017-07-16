@@ -1,4 +1,4 @@
-angular.module('module-main', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
+angular.module('module-main', ['minhasDiretivas','minhaFotoDiretiva', 'ngAnimate', 'ngRoute'])
     .config(function($routeProvider,$locationProvider) {
 
 
@@ -9,12 +9,12 @@ angular.module('module-main', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
     	
         $routeProvider.when('/fotos', {
             templateUrl: 'partials/principal.html',
-            controller: 'FotoController'
+            controller: 'FotosController'
         });
 
         $routeProvider.when('/fotos/new', {
             templateUrl: 'partials/fotos.html',
-            controller: ''
+            controller: 'FotoController'
         });
 
 
