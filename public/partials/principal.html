@@ -1,6 +1,13 @@
+
 <div class="jumbotron">
     <h1 class="text-center">Angular-Js</h1>
 </div>
+
+<p class="alert alert-info" ng-show="mensagem.length"> 
+    {{mensagem}} 
+</p>
+
+
 <div class="row">
     <div class="col-md-12"> 
         <form >
@@ -17,7 +24,7 @@
 <div class="row">                
     <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos |filter:filtro" titletulo="{{foto.titulo}}">            
         <img class ="img-responsive center-block"  src="{{foto.url}}" alt="{{foto.titulo}}">
-        <a href="" class="btn btn-primary btn-block">Edita</a>
+        <a href="/#/fotos/edit/{{foto._id}}" class="btn btn-primary btn-block">Edita</a>
         <button ng-click="remover(foto)" class="btn btn-danger btn-block">Deletar</button>                      
     </meu-painel>
 </div>

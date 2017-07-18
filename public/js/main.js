@@ -17,6 +17,11 @@ angular.module('module-main', ['minhasDiretivas','minhaFotoDiretiva', 'ngAnimate
             controller: 'FotoController'
         });
 
+        $routeProvider.when('/fotos/edit/:fotoId', {
+            templateUrl: 'partials/fotos.html',
+            controller: 'FotoController'
+        });
+
 
         $routeProvider.otherwise({redirectTo:'/fotos'});
         
