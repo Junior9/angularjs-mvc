@@ -12,6 +12,7 @@ angular.module('module-main').controller('FotoController',function($scope,$http)
 				$scope.foto = {};
 				$scope.mensagem = 'Foto casdastrada com sucesso';
 				console.log("foto cadastrada");
+				
 			})
 			.error(function (erro){
 				$scope.mensagem = 'Erro ao cadastrar foto';
