@@ -1,46 +1,26 @@
-angular.module('module-main').controller('FotoController',function($scope, $http, $routeParams){
+angular.module('module-main').controller('FotoController',function($scope, $http, $routeParams,recursoFoto,cadastroDeFotos){
+$scope.foto = {};
+        $scope.mensagem = '';
 
-	$scope.foto = {}
-	$scope.mensagem = {}
+        if($routeParams.fotoId) {
+            recursoFoto.get({fotoId: $routeParams.fotoId}, function(foto) {
+                $scope.foto = foto; 
+            }, function(erro) {
+                $scope.mensagem = 'Não foi possível obter a foto'
+            });
+        }
+        $scope.submeter = function() {
 
-	if($routeParams.fotoId){
-		$http.get('v1/fotos/' + $routeParams.fotoId)
-		.success(function(foto){
-			$scope.foto = foto;
-		})
-		.error(function(erro){
-			$mensagem = 'Foto não encontrada';
-		});	
-	}
-
-	$scope.subMeter = function(){
-
-		if ($scope.formulario.$valid){
-
-			if($scope.foto._id){
-				$http.put('v1/fotos/'+ $scope.foto._id,$scope.foto)
-				.success(function (foto){			
-					$scope.foto = foto;
-					$scope.mensagem = 'Foto editada com sucesso';					
-				})
-				.error(function (erro){
-					$scope.mensagem = 'Erro ao editar foto:' + $scope.foto.titulo;
-					console.log(erro)
-				});
-
-			}else{
-				$http.post('v1/fotos',$scope.foto)
-				.success(function (){			
-					$scope.foto = {};
-					$scope.mensagem = 'Foto casdastrada com sucesso';				
-				})
-				.error(function (erro){
-					$scope.mensagem = 'Erro ao cadastrar foto';
-					console.log(erro)
-				});	
-			}
-			
-		}
-	};
-
+            if ($scope.formulario.$valid) {
+                cadastroDeFotos.cadastrar($scope.foto)
+                .then(function(dados) {
+                    $scope.mensagem = dados.mensagem;
+                    if (dados.inclusao) $scope.foto = {};
+                })
+                .catch(function(erro) {
+                    $scope.mensagem = erro.mensagem;
+                });
+            }
+        };
 });
+
