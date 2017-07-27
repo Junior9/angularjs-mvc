@@ -1,4 +1,4 @@
-angular.module('module-main', ['minhasDiretivas','minhaFotoDiretiva', 'ngAnimate', 'ngRoute'])
+angular.module('module-main', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'meusServicos','minhaFotoDiretiva'])
     .config(function($routeProvider,$locationProvider) {
 
 
